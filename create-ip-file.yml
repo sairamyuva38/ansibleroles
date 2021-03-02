@@ -1,0 +1,15 @@
+---
+- hosts: docker
+  gather_facts: true
+  tasks:
+  - name: Gather remote ip
+    setup:
+      filter: ansible_default_ipv4.address
+#  - debug: 
+#      msg: "{{ ansible_default_ipv4.address }}"
+
+  - name: Create file by name ipaddress
+    copy:
+      dest: "/root/{{ ansible_default_ipv4.address }}.txt"     
+      content: |
+        {{ message }}

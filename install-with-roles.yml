@@ -1,0 +1,9 @@
+---
+- name: Install nginx, docker and telagraf
+  hosts: docker
+  become: true
+  roles: 
+    - ansible-role-docker
+    - ansible-role-nginx 
+#- import_playbook: install-nginx.yml
+#- import_playbook: install-docker.yml

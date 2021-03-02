@@ -1,0 +1,17 @@
+---
+- name: Install docker
+  hosts: telegraf
+  become: true
+  tasks:
+  - name: Add Docker repo
+    get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docer-ce.repo
+  - name: Install docker on web target
+    package:
+      name: docker-ce
+      state: present
+  - name: Start docker service
+    service:
+      name: docker
+      state: started
